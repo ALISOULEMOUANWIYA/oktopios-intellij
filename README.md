@@ -140,4 +140,4 @@ ALI SOULE MOUANWIYA
 
 ## License
 
-This project is open source, but the author keeps the project license and ownership. Add the full license text in a LICENSE file before accepting external contributions or publishing formal releases.
+This project is publicly available as open source, while ownership and licensing rights are retained by ALI SOULE MOUANWIYA. See `LICENSE` for details.
