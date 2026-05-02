@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.oktopios"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -40,7 +40,7 @@ kotlin {
     }
 }
 
-// GÃ©nÃ©ration du Lexer
+// GÃƒÂ©nÃƒÂ©ration du Lexer
 tasks.withType<org.jetbrains.grammarkit.tasks.GenerateLexerTask> {
     sourceFile.set(file("src/main/grammars/Oktopios.flex"))
     targetDir.set("src/main/gen/com/oktopios/intellij/lexer")
@@ -48,17 +48,17 @@ tasks.withType<org.jetbrains.grammarkit.tasks.GenerateLexerTask> {
     purgeOldFiles.set(true)
 }
 
-// GÃ©nÃ©ration du Parser
+// GÃƒÂ©nÃƒÂ©ration du Parser
 tasks.withType<GenerateParserTask> {
     sourceFile.set(file("src/main/resources/com/oktopios/lang/Oktopios.bnf"))
-    // Utilisation d'un chemin fixe dans src/main/gen pour Ã©viter les erreurs d'importation
+    // Utilisation d'un chemin fixe dans src/main/gen pour ÃƒÂ©viter les erreurs d'importation
     targetRoot.set(file("src/main/gen").absolutePath)
     pathToParser.set("com/oktopios/lang/parser/OktopiosParser.java")
     pathToPsiRoot.set("com/oktopios/lang/psi")
     purgeOldFiles.set(true)
 }
 
-// On s'assure que la gÃ©nÃ©ration prÃ©cÃ¨de la compilation
+// On s'assure que la gÃƒÂ©nÃƒÂ©ration prÃƒÂ©cÃƒÂ¨de la compilation
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     dependsOn("generateLexer", "generateParser")
 }
@@ -70,6 +70,6 @@ intellijPlatform {
             untilBuild.set("252.*")
         }
     }
-    // DÃ©sactive cette tÃ¢che lente qui causait les erreurs "Unknown element" dans vos logs
+    // DÃƒÂ©sactive cette tÃƒÂ¢che lente qui causait les erreurs "Unknown element" dans vos logs
     buildSearchableOptions.set(false)
 }

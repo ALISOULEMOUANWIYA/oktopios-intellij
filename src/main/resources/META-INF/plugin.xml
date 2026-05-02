@@ -1,7 +1,7 @@
 <idea-plugin url="https://github.com/ALISOULEMOUANWIYA/oktopios-intellij">
   <id>com.oktopios.intellij</id>
   <name>Oktopios Language</name>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <vendor email="mouanwiya30@gmail.com" url="https://github.com/ALISOULEMOUANWIYA/oktopios">
     ALI SOULE MOUANWIYA
   </vendor>
@@ -21,14 +21,12 @@
   ]]></description>
 
   <change-notes><![CDATA[
-    <h3>1.0.0</h3>
+    <h3>1.0.1</h3>
     <ul>
-      <li>Initial public release of the Oktopios Language plugin.</li>
-      <li>Added <code>.okp</code> file recognition.</li>
-      <li>Added syntax highlighting, commenter support, and brace matching.</li>
-      <li>Added color settings page.</li>
-      <li>Added basic Oktopios run action and run configuration support.</li>
-      <li>Added JetBrains Marketplace plugin logo and metadata.</li>
+      <li>Added Run from editor support for <code>.okp</code> files.</li>
+      <li>Added automatic Run configuration creation from the current Oktopios file.</li>
+      <li>Added gutter Run marker integration for Oktopios files.</li>
+      <li>Persisted the selected Oktopios file path in Run configurations.</li>
     </ul>
   ]]></change-notes>
 
@@ -65,6 +63,13 @@
 
     <configurationType
       implementation="com.oktopios.intellij.run.OktopiosRunConfigurationType"/>
+
+    <runConfigurationProducer
+      implementation="com.oktopios.intellij.run.OktopiosRunConfigurationProducer"/>
+
+    <codeInsight.lineMarkerProvider
+      language="Oktopios"
+      implementationClass="com.oktopios.intellij.run.OktopiosRunLineMarkerContributor"/>
   </extensions>
 
   <actions>

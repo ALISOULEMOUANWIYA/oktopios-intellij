@@ -41,7 +41,7 @@ On Windows:
 The installable plugin ZIP will be generated at:
 
 ```text
-build/distributions/oktopios-language-support-1.0.0.zip
+build/distributions/oktopios-language-support-1.0.1.zip
 ```
 
 ## Run in a Test IDE
@@ -65,7 +65,7 @@ On Windows:
 3. Go to `Settings` -> `Plugins`.
 4. Click the gear icon.
 5. Choose `Install Plugin from Disk...`.
-6. Select `build/distributions/oktopios-language-support-1.0.0.zip`.
+6. Select `build/distributions/oktopios-language-support-1.0.1.zip`.
 7. Restart the IDE if requested.
 
 ## Publish to JetBrains Marketplace
