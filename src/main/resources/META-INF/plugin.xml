@@ -1,23 +1,42 @@
-<idea-plugin>
+<idea-plugin url="https://github.com/ALISOULEMOUANWIYA/oktopios-intellij">
   <id>com.oktopios.intellij</id>
   <name>Oktopios Language</name>
-  <version>1.0.0</version> <!-- Synchronisé avec build.gradle.kts -->
+  <version>1.0.0</version>
   <vendor email="mouanwiya30@gmail.com" url="https://github.com/ALISOULEMOUANWIYA/oktopios">
-    ALISOULEMOUANWIYA
+    ALI SOULE MOUANWIYA
   </vendor>
 
   <description><![CDATA[
-    Support du langage de programmation <b>Oktopios</b> (.okp) dans les IDEs JetBrains.
+    <p><b>Oktopios Language</b> adds support for Oktopios source files in JetBrains IDEs.</p>
+    <p>The plugin recognizes <code>.okp</code> files and provides a cleaner editing experience for Oktopios projects.</p>
+    <ul>
+      <li>Syntax highlighting for Oktopios keywords, types, constants, strings, numbers, operators, and comments.</li>
+      <li>File type registration for <code>.okp</code> files.</li>
+      <li>Line and block comment support.</li>
+      <li>Brace, parenthesis, and bracket matching.</li>
+      <li>Color settings page for customizing the Oktopios editor theme.</li>
+      <li>Basic run action for launching the current file with the <code>okp</code> command.</li>
+    </ul>
+    <p>Source code: <a href="https://github.com/ALISOULEMOUANWIYA/oktopios-intellij">GitHub repository</a>.</p>
   ]]></description>
 
-  <!-- La version since-build sera patchée automatiquement par Gradle, mais gardons la cohérente -->
+  <change-notes><![CDATA[
+    <h3>1.0.0</h3>
+    <ul>
+      <li>Initial public release of the Oktopios Language plugin.</li>
+      <li>Added <code>.okp</code> file recognition.</li>
+      <li>Added syntax highlighting, commenter support, and brace matching.</li>
+      <li>Added color settings page.</li>
+      <li>Added basic Oktopios run action and run configuration support.</li>
+      <li>Added JetBrains Marketplace plugin logo and metadata.</li>
+    </ul>
+  ]]></change-notes>
+
   <idea-version since-build="233"/>
 
   <depends>com.intellij.modules.platform</depends>
 
   <extensions defaultExtensionNs="com.intellij">
-
-    <!-- Fichier type -->
     <fileType
       name="Oktopios File"
       implementationClass="com.oktopios.intellij.OktopiosFileType"
@@ -25,47 +44,38 @@
       language="Oktopios"
       extensions="okp"/>
 
-    <!-- Langage -->
     <lang.parserDefinition
       language="Oktopios"
       implementationClass="com.oktopios.intellij.OktopiosParserDefinition"/>
 
-    <!-- Coloration syntaxique (CORRIGÉ : Un seul suffit, vérifiez bien le package) -->
     <lang.syntaxHighlighterFactory
       language="Oktopios"
       implementationClass="com.oktopios.intellij.highlight.OktopiosSyntaxHighlighterFactory"/>
 
-
-    <!-- Commentaires -->
     <lang.commenter
       language="Oktopios"
       implementationClass="com.oktopios.intellij.OktopiosCommenter"/>
 
-    <!-- Indentation / Accolades -->
     <lang.braceMatcher
       language="Oktopios"
       implementationClass="com.oktopios.intellij.OktopiosBraceMatcher"/>
 
-    <!-- Icône dans les paramètres de couleur -->
     <colorSettingsPage
       implementation="com.oktopios.intellij.OktopiosColorSettingsPage"/>
 
-    <!-- Configuration de Run (DÉPLACÉ ICI) -->
     <configurationType
       implementation="com.oktopios.intellij.run.OktopiosRunConfigurationType"/>
-
   </extensions>
 
   <actions>
     <action
       id="Oktopios.RunFile"
       class="com.oktopios.intellij.actions.OktopiosRunAction"
-      text="Exécuter le fichier Oktopios"
-      description="Lance okp sur le fichier courant"
-      icon="AllIcons.Actions.Execute"> <!-- Utilisation d'une icône standard pour éviter les erreurs d'icône manquante -->
+      text="Run Oktopios File"
+      description="Run the current Oktopios file with okp"
+      icon="AllIcons.Actions.Execute">
       <add-to-group group-id="RunMenu" anchor="first"/>
       <keyboard-shortcut keymap="$default" first-keystroke="F5"/>
     </action>
   </actions>
-
 </idea-plugin>
