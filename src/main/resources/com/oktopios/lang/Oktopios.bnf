@@ -1,0 +1,19 @@
+{
+  parserClass="com.oktopios.lang.parser.OktopiosParser"
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Oktopios"
+  psiImplPackage="com.oktopios.lang.psi.impl"
+  psiPackage="com.oktopios.lang.psi"
+
+  elementTypeHolderClass="com.oktopios.lang.psi.OktopiosTypes"
+  elementTypeClass="com.oktopios.lang.psi.OktopiosElementType"
+  tokenTypeClass="com.oktopios.lang.psi.OktopiosTokenType"
+}
+
+oktopiosFile ::= item_*
+
+private item_ ::= (property | COMMENT)
+
+property ::= (KEY? SEPARATOR VALUE?) | KEY
+

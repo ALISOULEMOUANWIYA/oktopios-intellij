@@ -1,0 +1,71 @@
+<idea-plugin>
+  <id>com.oktopios.intellij</id>
+  <name>Oktopios Language</name>
+  <version>1.0.0</version> <!-- Synchronisé avec build.gradle.kts -->
+  <vendor email="mouanwiya30@gmail.com" url="https://github.com/ALISOULEMOUANWIYA/oktopios">
+    ALISOULEMOUANWIYA
+  </vendor>
+
+  <description><![CDATA[
+    Support du langage de programmation <b>Oktopios</b> (.okp) dans les IDEs JetBrains.
+  ]]></description>
+
+  <!-- La version since-build sera patchée automatiquement par Gradle, mais gardons la cohérente -->
+  <idea-version since-build="233"/>
+
+  <depends>com.intellij.modules.platform</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+
+    <!-- Fichier type -->
+    <fileType
+      name="Oktopios File"
+      implementationClass="com.oktopios.intellij.OktopiosFileType"
+      fieldName="INSTANCE"
+      language="Oktopios"
+      extensions="okp"/>
+
+    <!-- Langage -->
+    <lang.parserDefinition
+      language="Oktopios"
+      implementationClass="com.oktopios.intellij.OktopiosParserDefinition"/>
+
+    <!-- Coloration syntaxique (CORRIGÉ : Un seul suffit, vérifiez bien le package) -->
+    <lang.syntaxHighlighterFactory
+      language="Oktopios"
+      implementationClass="com.oktopios.intellij.highlight.OktopiosSyntaxHighlighterFactory"/>
+
+
+    <!-- Commentaires -->
+    <lang.commenter
+      language="Oktopios"
+      implementationClass="com.oktopios.intellij.OktopiosCommenter"/>
+
+    <!-- Indentation / Accolades -->
+    <lang.braceMatcher
+      language="Oktopios"
+      implementationClass="com.oktopios.intellij.OktopiosBraceMatcher"/>
+
+    <!-- Icône dans les paramètres de couleur -->
+    <colorSettingsPage
+      implementation="com.oktopios.intellij.OktopiosColorSettingsPage"/>
+
+    <!-- Configuration de Run (DÉPLACÉ ICI) -->
+    <configurationType
+      implementation="com.oktopios.intellij.run.OktopiosRunConfigurationType"/>
+
+  </extensions>
+
+  <actions>
+    <action
+      id="Oktopios.RunFile"
+      class="com.oktopios.intellij.actions.OktopiosRunAction"
+      text="Exécuter le fichier Oktopios"
+      description="Lance okp sur le fichier courant"
+      icon="AllIcons.Actions.Execute"> <!-- Utilisation d'une icône standard pour éviter les erreurs d'icône manquante -->
+      <add-to-group group-id="RunMenu" anchor="first"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="F5"/>
+    </action>
+  </actions>
+
+</idea-plugin>
