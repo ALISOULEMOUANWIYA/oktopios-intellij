@@ -1,4 +1,4 @@
-﻿import org.jetbrains.grammarkit.tasks.GenerateParserTask
+import org.jetbrains.grammarkit.tasks.GenerateParserTask
 
 plugins {
     kotlin("jvm") version "1.9.22"
@@ -67,7 +67,7 @@ intellijPlatform {
     pluginConfiguration {
         ideaVersion {
             sinceBuild.set("233")
-            untilBuild.set("243.*")
+            untilBuild.set("252.*")
         }
     }
     // DÃ©sactive cette tÃ¢che lente qui causait les erreurs "Unknown element" dans vos logs
